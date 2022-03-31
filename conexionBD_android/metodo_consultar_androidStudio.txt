@@ -1,0 +1,28 @@
+ public void consultar(View view){
+        placa = jetplaca.getText().toString();
+        if (placa.isEmpty()){
+            Toast.makeText(this,"La placa es requerida para busqueda", Toast.LENGTH_SHORT).show();
+            jetplaca.requestFocus();
+        }
+        else{
+            AdminSqliteOpenHelper admin=new AdminSqliteOpenHelper(this, "Concesionario1.db", null, 1);
+            SQLiteDatabase db = admin.getReadableDatabase();
+            Cursor fila = db.rawQuery("Select * from TblAutomovil where placa = '"+ placa + "'",null);
+            if (fila.moveToFirst()) {
+                if (fila.getString(4).equals("no")) {
+                    Toast.makeText(this, "El registro esta anulado", Toast.LENGTH_SHORT).show();
+                    jetplaca.requestFocus();
+                } else {
+                    sw = 1;
+                    jetmarca.setText(fila.getString(1));
+                    jetmodelo.setText(fila.getString(2));
+                    jetvalor.setText(fila.getString(3));
+                }
+            }
+            else{
+                Toast.makeText(this,"Vehiculo no registrado", Toast.LENGTH_SHORT).show();
+                jetplaca.requestFocus();
+            }
+            db.close();
+        }
+    }

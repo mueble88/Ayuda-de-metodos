@@ -1,0 +1,19 @@
+ public void eliminar(View view){
+        if (sw == 1){
+            AdminSqliteOpenHelper admin=new AdminSqliteOpenHelper(this, "Concesionario1.db", null, 1);
+            SQLiteDatabase db = admin.getWritableDatabase();
+            ContentValues dato = new ContentValues();
+            dato.put("placa",placa);
+            resp2 = db.delete("TblAutomovil","placa='" + placa + "'",null);
+            if (resp2 > 0){
+                Toast.makeText(this,"Registro elimimado", Toast.LENGTH_SHORT).show();
+                limpiar_campos();
+            }else{
+                Toast.makeText(this, "Error eliminando registro", Toast.LENGTH_SHORT).show();
+                jetplaca.requestFocus();
+            }
+            db.close();
+        }else{
+            Toast.makeText(this, "Debe primero consultar", Toast.LENGTH_SHORT).show();
+        }
+    }

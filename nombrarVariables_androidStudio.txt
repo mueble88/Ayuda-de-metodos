@@ -1,0 +1,40 @@
+package com.example.sqlite_automovil;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.view.View;
+import android.widget.Toast;
+import android.database.Cursor;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText jetplaca, jetmarca, jetmodelo, jetvalor;
+    Button  jbtguardar, jbtconsultar, jbtanular, jbtlimpiar, jbteliminar;
+    String placa;
+    long resp;
+    int sw,resp2;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        getSupportActionBar().hide();
+        jetplaca=findViewById(R.id.etplaca);
+        jetmarca=findViewById(R.id.etmarca);
+        jetmodelo=findViewById(R.id.etmodelo);
+        jetvalor=findViewById(R.id.etvalor);
+        jbtguardar=findViewById(R.id.btguardar);
+        jbtanular=findViewById(R.id.btanular);
+        jbtconsultar=findViewById(R.id.btconsultar);
+        jbteliminar=findViewById(R.id.bteliminar);
+        jbtlimpiar=findViewById(R.id.btlimpiar);
+        sw=0;
+    }

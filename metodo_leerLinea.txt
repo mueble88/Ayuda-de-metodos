@@ -1,0 +1,12 @@
+//metodo de leerLinea
+
+public static String leerLinea(){
+  try {
+     InputStreamReader in = new InputStreamReader(System.in);
+     BufferedReader br = new BufferedReader(in);
+     String a = br.readLine();
+     return a;
+  }catch(IOException ex){
+     return "";
+  }
+}

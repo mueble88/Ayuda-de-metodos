@@ -1,0 +1,10 @@
+METODOS HPPT
+
+POST /users/ crear usuario
+
+GET /users/{id} odtenerUsuario
+
+PUT /users/{id} modificarUsuario  == PATCH
+
+DELETE /users/{id} eliminarUsuario 
+

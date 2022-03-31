@@ -1,0 +1,14 @@
+//es un metodo de desordena un array de de a dos posiciones y pone la mitad impar  y luego la otra mitad par
+//este metodo solo se puede hacer 6 veces ya que vuelve a su orden. 
+
+
+ private static void ordenarALoCamilo(EquipoDeFutbol[] array){
+        int posicion0=0;
+        int posicionMedio = array.length/2;
+        for (int i = 0; i < posicionMedio; i++) {
+            swap(array, i, i*2);
+        }
+        for(int i = 0; i + posicionMedio +(2*i) < array.length; i++){
+            swap(array, i + posicionMedio, i + posicionMedio +(2*i) );
+        }
+    }

@@ -1,0 +1,20 @@
+    
+
+
+//metodo desordenar
+
+    public static void desordenar(EquipoDeFutbol[] array) {
+        Random random = new Random();
+        int count = array.length;
+        for (int i = count; i > 1; i--) {
+            swap(array, i - 1, random.nextInt(i));
+        }
+    }
+
+//metodo cambiar una posicion por otra
+
+    private static void swap(EquipoDeFutbol[] array, int i, int j) {
+        EquipoDeFutbol temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }

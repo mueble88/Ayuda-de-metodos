@@ -1,0 +1,35 @@
+ public void guardar(View view){
+        String marca,modelo,valor;
+        placa=jetplaca.getText().toString();
+        marca=jetmarca.getText().toString();
+        modelo=jetmodelo.getText().toString();
+        valor=jetvalor.getText().toString();
+
+        if(placa.isEmpty() || marca.isEmpty() || modelo.isEmpty() || valor.isEmpty()){
+            Toast.makeText(this,"Todos los datos son requeridos", Toast.LENGTH_SHORT).show();
+            jetplaca.requestFocus();
+        }
+        else{
+            AdminSqliteOpenHelper admin=new AdminSqliteOpenHelper(this, "Concesionario1.db", null, 1);
+            SQLiteDatabase db = admin.getWritableDatabase();
+            ContentValues dato =new ContentValues();
+            dato.put("placa",placa);
+            dato.put("marca",marca);
+            dato.put("modelo", modelo);
+            dato.put("valor",valor);
+            if (sw == 0) {
+                resp = db.insert("TblAutomovil", null, dato);
+            }else{
+                sw=0;
+                resp2 = db.update("TblAutomovil",dato,"placa='" + placa + "'",null);
+            }
+            if (resp > 0){
+                Toast.makeText(this, "Registro guardado", Toast.LENGTH_SHORT).show();
+                limpiar_campos();
+            }
+            else{
+                Toast.makeText(this,"Error guardando registro", Toast.LENGTH_SHORT).show();
+            }
+            db.close();
+        }
+    }
